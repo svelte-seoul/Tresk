@@ -29,8 +29,21 @@ module.exports = {
   ],
   settings: {
     'svelte3/typescript': true,
+    'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },
   },
   rules: {
+    // todo
     'import/no-extraneous-dependencies': 'off',
+    'import/no-mutable-exports': 'off',
+    'import/prefer-default-export': 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        ts: 'never',
+      },
+    ],
+    // 'no-multiple-empty-lines': 'off',
   },
 };
