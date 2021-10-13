@@ -1,6 +1,6 @@
 import type { Task, TaskStorage } from '../types';
 
-export const add = (previous: TaskStorage, incomming: Task) => {
+export const add = (previous: TaskStorage, incomming: Task): TaskStorage => {
   const newId = Math.max(
     ...Object
       .keys(previous)
@@ -9,3 +9,7 @@ export const add = (previous: TaskStorage, incomming: Task) => {
 
   return { ...previous, [newId]: incomming };
 };
+
+export const remove = (previous: TaskStorage, target: number) : TaskStorage => (
+  { ...previous, [target]: undefined }
+);

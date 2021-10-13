@@ -1,5 +1,6 @@
 import type { Task, TaskStorage } from '../types';
-import { add } from './reducers';
+
+import { add, remove } from './reducers';
 
 describe('add', () => {
   it('adds new task to list', () => {
@@ -17,5 +18,22 @@ describe('add', () => {
     };
 
     expect(add(before, incomming)).toEqual(after);
+  });
+});
+
+describe('remove', () => {
+  it('removes task from list', () => {
+    const target: number = 3;
+
+    const before: TaskStorage = {
+      1: { main: 'content 1', subTasks: [] },
+      3: { main: 'content 3', subTasks: [] },
+    };
+
+    const after: TaskStorage = {
+      1: { main: 'content 1', subTasks: [] },
+    };
+
+    expect(remove(before, target)).toEqual(after);
   });
 });
