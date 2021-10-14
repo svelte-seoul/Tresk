@@ -27,12 +27,14 @@ describe('remove', () => {
     const target: number = 3;
 
     const before: TaskStorage = {
-      1: { main: 'content 1', subTasks: [] },
+      1: { main: 'content 1', subTasks: [3] },
+      2: { main: 'content 2', subTasks: [] },
       3: { main: 'content 3', subTasks: [] },
     };
 
     const after: TaskStorage = {
       1: { main: 'content 1', subTasks: [] },
+      2: { main: 'content 2', subTasks: [] },
     };
 
     expect(remove(before, target)).toEqual(after);

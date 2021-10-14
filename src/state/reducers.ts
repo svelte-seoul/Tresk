@@ -7,18 +7,39 @@ export const add = (previous: TaskStorage, parent: number, child: Task): TaskSto
       .map((key) => parseInt(key, 10)),
   );
 
+  const { subTasks } = previous[parent];
+
   const nextId = currentMaxId + 1;
 
-  return {
+  return ({
     ...previous,
     [parent]: {
       ...previous[parent],
-      subTasks: [...previous[parent].subTasks, nextId],
+      subTasks: [...subTasks, nextId],
     },
     [nextId]: child,
-  };
+  });
 };
 
-export const remove = (previous: TaskStorage, target: number) : TaskStorage => (
-  { ...previous, [target]: undefined }
-);
+export const remove = (previous: TaskStorage, target: number) : TaskStorage => {
+  const parent = Object.entries(previous).reduce(
+    (ret, [id, { subTasks }]) => {
+      if (!subTasks.includes(target)) {
+        return ret;
+      }
+
+      return id;
+    }, -1,
+  );
+
+  const { subTasks } = previous[parent];
+
+  return ({
+    ...previous,
+    [parent]: {
+      ...previous[parent],
+      subTasks: subTasks.filter((id: number) => id !== target),
+    },
+    [target]: undefined,
+  });
+};
