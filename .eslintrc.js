@@ -44,6 +44,7 @@ module.exports = {
         ts: 'never',
       },
     ],
+    'import/first': 'off',
     // 'no-multiple-empty-lines': 'off',
   },
 };
