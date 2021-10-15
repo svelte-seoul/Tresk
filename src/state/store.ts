@@ -18,5 +18,18 @@ const createTaskStolage = () => {
   };
 };
 
+const createInputField = () => {
+  const initialState: string = '';
+
+  const { subscribe, set, update } = writable(initialState);
+
+  return {
+    subscribe,
+    set,
+    update,
+    reset: () => set(initialState),
+  };
+};
+
 export const taskStolage = createTaskStolage();
-export const inputField = writable('');
+export const inputField = createInputField();

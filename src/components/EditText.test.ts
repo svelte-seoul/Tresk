@@ -5,6 +5,10 @@ import { inputField } from '../state/store';
 import EditText from './EditText.svelte';
 
 describe('EditText', () => {
+  beforeEach(() => {
+    inputField.reset();
+  });
+
   it('renders input element', () => {
     const { getByRole } = render(EditText);
 
