@@ -4,7 +4,9 @@ import type { Task, TaskStorage } from '../types';
 import { add, remove } from './reducers';
 
 const createTaskStolage = () => {
-  const { subscribe, set, update } = writable({});
+  const initialState: TaskStorage = { 0: { main: 'base', subTasks: [] } };
+
+  const { subscribe, set, update } = writable(initialState);
 
   return {
     subscribe,
@@ -12,7 +14,7 @@ const createTaskStolage = () => {
       (previous: TaskStorage) => add(previous, parent, incomming),
     ),
     remove: (target: number) => update((previous) => remove(previous, target)),
-    reset: () => set({}),
+    reset: () => set(initialState),
   };
 };
 
