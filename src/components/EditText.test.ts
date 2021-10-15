@@ -1,5 +1,4 @@
-import { render } from '@testing-library/svelte';
-import userEvent from '@testing-library/user-event';
+import { fireEvent, render } from '@testing-library/svelte';
 
 import EditText from './EditText.svelte';
 
@@ -10,14 +9,14 @@ describe('EditText', () => {
     expect(getByRole('textbox')).toBeInTheDocument();
   });
 
-  it('exposes onChange event handler', () => {
+  it('exposes onChange event handler', async () => {
     const handleChange = jest.fn();
 
     const { getByRole, component } = render(EditText);
 
     component.$on('change', handleChange);
 
-    userEvent.type(getByRole('textbox'), 'hello');
+    await fireEvent.input(getByRole('textbox'), { target: { value: 'hello' } });
 
     expect(handleChange).toBeCalled();
   });
