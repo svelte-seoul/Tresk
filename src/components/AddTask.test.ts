@@ -16,14 +16,12 @@ describe('AddTask', () => {
   });
 
   it('adds task to taskStolage on click', () => {
-    const task = 'work';
-
-    inputField.set(task);
+    inputField.set('task');
 
     const { getByRole } = render(AddTask);
 
     fireEvent.click(getByRole('button', { name: 'Add' }));
 
-    expect(get(taskStolage)).toEqual({ 0: { main: 'base', subTasks: [1] }, 1: task });
+    expect(get(taskStolage)).toEqual({ 0: { main: 'base', subTasks: [1] }, 1: 'task' });
   });
 });
