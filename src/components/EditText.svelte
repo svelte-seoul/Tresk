@@ -1,11 +1,5 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
-    
-    const dispatch = createEventDispatcher();
-
-    const onChange = (e) => {
-      dispatch('change', e);
-    };
+    import { inputField } from '../state/store';
 </script>
 
-<input on:input={onChange}/>
+<input bind:value={$inputField}/>

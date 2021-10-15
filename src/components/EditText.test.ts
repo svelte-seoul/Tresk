@@ -1,4 +1,6 @@
 import { fireEvent, render } from '@testing-library/svelte';
+import { get } from 'svelte/store';
+import { inputField } from '../state/store';
 
 import EditText from './EditText.svelte';
 
@@ -9,15 +11,11 @@ describe('EditText', () => {
     expect(getByRole('textbox')).toBeInTheDocument();
   });
 
-  it('exposes onChange event handler', async () => {
-    const handleChange = jest.fn();
+  it('updates inputField', async () => {
+    const { getByRole } = render(EditText);
 
-    const { getByRole, component } = render(EditText);
+    await fireEvent.input(getByRole('textbox'), { target: { value: 'task' } });
 
-    component.$on('change', handleChange);
-
-    await fireEvent.input(getByRole('textbox'), { target: { value: 'hello' } });
-
-    expect(handleChange).toBeCalled();
+    expect(get(inputField)).toBe('task');
   });
 });
