@@ -1,8 +1,6 @@
 export type Task = {
     main: String,
-
-    // Todo
-    subTasks: (Task | number)[]
+    subTasks: number[]
 }
 
 export type TaskStorage = {[key: number] : Task}

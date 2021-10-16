@@ -1,10 +1,14 @@
 <script>
-    export let main;
-    export let subTasks = [];
+    export let id;
+    export let tasks;
+
+    const { main, subTasks } = tasks[id.toString()];
 </script>
 
-<p>{main}</p>
+{#if id !== 0}
+    <p>{main}</p>
+{/if}
 
-{#each subTasks as {main, subTasks}}
-    <svelte:self {main} {subTasks}/>
+{#each subTasks as taskId}
+    <svelte:self id={taskId} {tasks}/>
 {/each}
