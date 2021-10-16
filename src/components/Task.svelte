@@ -3,7 +3,10 @@
 
     export let id;
 
-    const { main, subTasks } = $taskStolage[id.toString()];
+    let main;
+    let subTasks;
+
+    $ : ({ main, subTasks } = $taskStolage[id.toString()]);
 </script>
 
 {#if id !== 0}

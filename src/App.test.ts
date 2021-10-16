@@ -1,8 +1,13 @@
-import { render } from '@testing-library/svelte';
+import { fireEvent, render } from '@testing-library/svelte';
 
 import App from './App.svelte';
+import { inputField } from './state/store';
 
 describe('App', () => {
+  beforeEach(() => {
+    inputField.reset();
+  });
+
   it('renders header', () => {
     const { getByText } = render(App);
 
@@ -19,5 +24,15 @@ describe('App', () => {
     const { getByRole } = render(App);
 
     expect(getByRole('button', { name: 'Add' })).toBeInTheDocument();
+  });
+
+  it('adds task using input field and button', async () => {
+    inputField.set('task');
+
+    const { getByRole, getByText } = render(App);
+
+    await fireEvent.click(getByRole('button', { name: 'Add' }));
+
+    expect(getByText('task')).toBeInTheDocument();
   });
 });

@@ -6,6 +6,7 @@ import AddTask from './AddTask.svelte';
 
 describe('AddTask', () => {
   beforeEach(() => {
+    inputField.reset();
     taskStolage.reset();
   });
 
@@ -16,12 +17,23 @@ describe('AddTask', () => {
   });
 
   it('adds task to taskStolage on click', () => {
-    inputField.set('task');
-
     const { getByRole } = render(AddTask);
 
+    inputField.set('task 1');
     fireEvent.click(getByRole('button', { name: 'Add' }));
 
-    expect(get(taskStolage)).toEqual({ 0: { main: 'base', subTasks: [1] }, 1: 'task' });
+    expect(get(taskStolage)).toEqual({
+      0: { main: 'base', subTasks: [1] },
+      1: { main: 'task 1', subTasks: [] },
+    });
+
+    inputField.set('task 2');
+    fireEvent.click(getByRole('button', { name: 'Add' }));
+
+    expect(get(taskStolage)).toEqual({
+      0: { main: 'base', subTasks: [1, 2] },
+      1: { main: 'task 1', subTasks: [] },
+      2: { main: 'task 2', subTasks: [] },
+    });
   });
 });
