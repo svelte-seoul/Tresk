@@ -1,5 +1,6 @@
 <script>
     import { taskStolage } from '../state/store';
+    import Typography from './Typography.svelte';
 
     export let id;
 
@@ -10,7 +11,7 @@
 </script>
 
 {#if id !== 0}
-    <p>{main}</p>
+    <Typography tag='p' text={main}/>
 {/if}
 
 <ul>
