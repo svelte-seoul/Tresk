@@ -1,7 +1,7 @@
-import { fireEvent, render } from '@testing-library/svelte';
 import { get } from 'svelte/store';
-import { inputField } from '../state/store';
+import { fireEvent, render } from '@testing-library/svelte';
 
+import { inputField } from '../state/store';
 import EditText from './EditText.svelte';
 
 describe('EditText', () => {

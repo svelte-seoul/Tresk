@@ -9,7 +9,6 @@
         padding: 0;
         border: none;
         background: none;
-        color: var(--textColor)
     }
     button:hover {
         font-weight: bold;

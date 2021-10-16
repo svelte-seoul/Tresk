@@ -1,8 +1,7 @@
-import { fireEvent, render } from '@testing-library/svelte';
 import { get } from 'svelte/store';
+import { fireEvent, render } from '@testing-library/svelte';
 
 import { taskStolage, selectedId } from '../state/store';
-// @ts-ignore
 import TaskComponent from './Task.svelte';
 
 describe('Task', () => {

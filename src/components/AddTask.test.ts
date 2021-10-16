@@ -1,7 +1,7 @@
-import { fireEvent, render } from '@testing-library/svelte';
 import { get } from 'svelte/store';
-import { inputField, taskStolage, selectedId } from '../state/store';
+import { fireEvent, render } from '@testing-library/svelte';
 
+import { inputField, taskStolage, selectedId } from '../state/store';
 import AddTask from './AddTask.svelte';
 
 describe('AddTask', () => {

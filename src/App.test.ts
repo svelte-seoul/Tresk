@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/svelte';
 
-import App from './App.svelte';
 import { inputField } from './state/store';
+import App from './App.svelte';
 
 describe('App', () => {
   beforeEach(() => {
