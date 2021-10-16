@@ -10,10 +10,12 @@
     $ : ({ main, subTasks } = $taskStolage[id.toString()]);
 
     const handleClick = () => selectedId.set(id);
+
+    $: isSelected = id === $selectedId;
 </script>
 
 {#if id !== 0}
-    <TextButton text={main} onClick={handleClick}/>
+    <TextButton {isSelected} text={main} onClick={handleClick}/>
 {/if}
 
 <ul>

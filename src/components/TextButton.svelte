@@ -1,5 +1,6 @@
 <script>
     export let text = '';
+    export let isSelected = false;
     export let onClick;
 </script>
 
@@ -8,12 +9,19 @@
         padding: 0;
         border: none;
         background: none;
+        color: var(--textColor)
     }
     button:hover {
         font-weight: bold;
     }
+    .isSelected {
+		color: red
+	}
 </style>
 
-<button type='button' on:click={onClick}>
+<button 
+  class:isSelected
+  type='button' 
+  on:click={onClick}>
     {text}
 </button>
