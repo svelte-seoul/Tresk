@@ -32,5 +32,19 @@ const createInputField = () => {
   };
 };
 
+const createSelectedId = () => {
+  const initialState: number = 0;
+
+  const { subscribe, set, update } = writable(initialState);
+
+  return {
+    subscribe,
+    set,
+    update,
+    reset: () => set(initialState),
+  };
+};
+
 export const taskStolage = createTaskStolage();
 export const inputField = createInputField();
+export const selectedId = createSelectedId();

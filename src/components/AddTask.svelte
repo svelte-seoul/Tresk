@@ -1,10 +1,9 @@
 <script>
-    import { taskStolage, inputField } from '../state/store';
+    import { taskStolage, inputField, selectedId } from '../state/store';
 </script>
 
-<!-- TODO: parent id need to be stored somewhere and replace 0 -->
 <button 
   type='button'
-  on:click={() => taskStolage.add(0, { main: $inputField, subTasks: [] })}>
+  on:click={() => taskStolage.add($selectedId, { main: $inputField, subTasks: [] })}>
     Add
 </button>
