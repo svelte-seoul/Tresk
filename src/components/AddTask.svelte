@@ -4,6 +4,6 @@
 
 <button 
   type='button'
-  on:click={() => taskStolage.add($selectedId, { main: $inputField, subTasks: [] })}>
+  on:click={() => taskStolage.add($selectedId, $inputField)}>
     Add
 </button>

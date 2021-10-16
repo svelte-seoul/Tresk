@@ -1,6 +1,6 @@
-import type { Task, TaskStorage } from '../types';
+import type { Content, TaskStorage } from '../types';
 
-export const add = (previous: TaskStorage, parent: number, child: Task): TaskStorage => {
+export const add = (previous: TaskStorage, parent: number, content: Content): TaskStorage => {
   const currentMaxId = Math.max(
     ...Object
       .keys(previous)
@@ -17,7 +17,7 @@ export const add = (previous: TaskStorage, parent: number, child: Task): TaskSto
       ...previous[parent],
       subTasks: [...subTasks, nextId],
     },
-    [nextId]: child,
+    [nextId]: { main: content, subTasks: [] },
   });
 };
 

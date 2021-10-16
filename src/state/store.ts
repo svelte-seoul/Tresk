@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type { Task, TaskStorage } from '../types';
+import type { Content, TaskStorage } from '../types';
 
 import { add, remove } from './reducers';
 
@@ -11,8 +11,8 @@ const createTaskStolage = () => {
   return {
     subscribe,
     set,
-    add: (parent: number, incomming: Task) => update(
-      (previous: TaskStorage) => add(previous, parent, incomming),
+    add: (parent: number, content: Content) => update(
+      (previous: TaskStorage) => add(previous, parent, content),
     ),
     remove: (target: number) => update((previous) => remove(previous, target)),
     reset: () => set(initialState),

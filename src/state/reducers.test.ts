@@ -1,11 +1,11 @@
-import type { Task, TaskStorage } from '../types';
+import type { Content, TaskStorage } from '../types';
 
 import { add, remove } from './reducers';
 
 describe('add', () => {
   it('adds new task to list', () => {
     const parent = 1;
-    const child: Task = { main: 'content 4', subTasks: [] };
+    const content: Content = 'content 4';
 
     const before: TaskStorage = {
       1: { main: 'content 1', subTasks: [] },
@@ -18,7 +18,7 @@ describe('add', () => {
       4: { main: 'content 4', subTasks: [] },
     };
 
-    expect(add(before, parent, child)).toEqual(after);
+    expect(add(before, parent, content)).toEqual(after);
   });
 });
 

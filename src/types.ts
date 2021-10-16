@@ -1,5 +1,7 @@
+export type Content = string
+
 export type Task = {
-    main: String,
+    main: Content,
     subTasks: number[]
 }
 
