@@ -1,6 +1,6 @@
 <script>
-    import { taskStolage } from '../state/store';
-    import Typography from './Typography.svelte';
+    import { selectedId, taskStolage } from '../state/store';
+    import TextButton from './TextButton.svelte';
 
     export let id;
 
@@ -8,10 +8,12 @@
     let subTasks;
 
     $ : ({ main, subTasks } = $taskStolage[id.toString()]);
+
+    const handleClick = () => selectedId.set(id);
 </script>
 
 {#if id !== 0}
-    <Typography tag='p' text={main}/>
+    <TextButton text={main} onClick={handleClick}/>
 {/if}
 
 <ul>

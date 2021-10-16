@@ -1,14 +1,16 @@
-import { render } from '@testing-library/svelte';
+import { fireEvent, render } from '@testing-library/svelte';
+import { get } from 'svelte/store';
 
-import { taskStolage } from '../state/store';
+import { taskStolage, selectedId } from '../state/store';
 import TaskComponent from './Task.svelte';
 
 describe('Task', () => {
   beforeEach(() => {
     taskStolage.reset();
+    selectedId.reset();
   });
 
-  it('renders Maintask', () => {
+  it('renders tasks recursively', () => {
     taskStolage.set({
       0: { main: 'base', subTasks: [1, 2] },
       1: { main: 'content 1', subTasks: [3] },
@@ -27,5 +29,22 @@ describe('Task', () => {
     expect(getByText('content 2')).toBeInTheDocument();
     expect(getByText('content 3')).toBeInTheDocument();
     expect(getByText('content 4')).toBeInTheDocument();
+  });
+
+  it('selects task on click', async () => {
+    selectedId.set(0);
+    taskStolage.set({
+      0: { main: 'base', subTasks: [1] },
+      1: { main: 'content 1', subTasks: [] },
+    });
+
+    const { getByText } = render(TaskComponent, {
+      props: { id: 0 },
+    });
+
+    await fireEvent.click(getByText('content 1'));
+
+    expect(get(selectedId)).not.toBe(0);
+    expect(get(selectedId)).toBe(1);
   });
 });
