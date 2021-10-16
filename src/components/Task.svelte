@@ -1,8 +1,9 @@
 <script>
-    export let id;
-    export let tasks;
+    import { taskStolage } from '../state/store';
 
-    const { main, subTasks } = tasks[id.toString()];
+    export let id;
+
+    const { main, subTasks } = $taskStolage[id.toString()];
 </script>
 
 {#if id !== 0}
@@ -10,5 +11,5 @@
 {/if}
 
 {#each subTasks as taskId}
-    <svelte:self id={taskId} {tasks}/>
+    <svelte:self id={taskId}/>
 {/each}

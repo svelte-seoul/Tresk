@@ -10,6 +10,7 @@ const createTaskStolage = () => {
 
   return {
     subscribe,
+    set,
     add: (parent: number, incomming: Task) => update(
       (previous: TaskStorage) => add(previous, parent, incomming),
     ),
