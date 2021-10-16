@@ -15,7 +15,7 @@
 {/if}
 
 <ul>
-    {#each subTasks as taskId}
+    {#each subTasks as taskId (taskId)}
         <li><svelte:self id={taskId}/></li>
     {/each}
 </ul>
