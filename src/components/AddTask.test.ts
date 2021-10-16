@@ -21,22 +21,32 @@ describe('AddTask', () => {
     const { getByRole } = render(AddTask);
 
     selectedId.set(0);
-    inputField.set('task 1');
+    inputField.set('content 1');
     await fireEvent.click(getByRole('button', { name: 'Add' }));
 
     expect(get(taskStolage)).toEqual({
       0: { main: 'base', subTasks: [1] },
-      1: { main: 'task 1', subTasks: [] },
+      1: { main: 'content 1', subTasks: [] },
     });
 
     selectedId.set(1);
-    inputField.set('task 2');
+    inputField.set('content 2');
     await fireEvent.click(getByRole('button', { name: 'Add' }));
 
     expect(get(taskStolage)).toEqual({
       0: { main: 'base', subTasks: [1] },
-      1: { main: 'task 1', subTasks: [2] },
-      2: { main: 'task 2', subTasks: [] },
+      1: { main: 'content 1', subTasks: [2] },
+      2: { main: 'content 2', subTasks: [] },
     });
+  });
+
+  it('empty input field on click', async () => {
+    const { getByRole } = render(AddTask);
+
+    inputField.set('content 1');
+
+    await fireEvent.click(getByRole('button', { name: 'Add' }));
+
+    expect(get(inputField)).toBe('');
   });
 });
