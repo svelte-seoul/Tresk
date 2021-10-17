@@ -16,7 +16,9 @@ type ThemeSpecificColors = {
     placeholder: string,
 }
 
-type Theme = CommonColors & ThemeSpecificColors
+export type Theme = CommonColors & ThemeSpecificColors
+
+export type ThemeType = 'light' | 'dark'
 
 const common: CommonColors = {
   primary: '#0db293',
