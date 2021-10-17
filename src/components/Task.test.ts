@@ -2,8 +2,8 @@ import { get } from 'svelte/store';
 import { fireEvent, render } from '@testing-library/svelte';
 
 import { taskStolage, selectedId } from '../state/store';
-import Task from './Task.svelte';
 // @ts-ignore
+import Task from './Task.svelte';
 import ThemeWrapper from '../testUtils/ThemeWrapper.svelte';
 
 describe('Task', () => {

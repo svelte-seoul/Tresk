@@ -1,6 +1,6 @@
 <script>
     import { selectedId, taskStolage } from '../state/store';
-    import TextButton from './TextButton.svelte';
+    import Button from '../uis/Button.svelte';
 
     export let id;
 
@@ -15,7 +15,9 @@
 </script>
 
 {#if id !== 0}
-    <TextButton {isSelected} text={main} onClick={handleClick}/>
+    <Button text type={isSelected ? 'secondary' : 'primary'} on:click={handleClick}>
+        {main}
+    </Button>
 {/if}
 
 <ul>

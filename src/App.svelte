@@ -2,10 +2,10 @@
     import { getContext } from 'svelte';
     import { selectedId } from './state/store';
     
-    import TextButton from './components/TextButton.svelte';
     import EditText from './components/EditText.svelte';
     import AddTask from './components/AddTask.svelte';
     import Task from './components/Task.svelte';
+    import Button from './uis/Button.svelte';
 
     const { toggle } = getContext('theme');
 
@@ -14,8 +14,12 @@
     const handleClick = () => selectedId.set(0);
 </script>
 
-<TextButton {isSelected}  text='Tresk' onClick={handleClick}/>
-<button type='button' on:click={toggle}>Toggle Theme</button>
+<Button text type={isSelected ? 'secondary' : 'primary'} on:click={handleClick}>
+    Tresk
+</Button>
+<Button type='success' on:click={toggle}>
+    Toggle Theme
+</Button>
 <EditText/>
 <AddTask/>
 <Task id={0}/>
