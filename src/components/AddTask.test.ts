@@ -2,6 +2,7 @@ import { get } from 'svelte/store';
 import { fireEvent, render } from '@testing-library/svelte';
 
 import { inputField, taskStolage, selectedId } from '../state/store';
+// @ts-ignore
 import AddTask from './AddTask.svelte';
 
 describe('AddTask', () => {
@@ -17,26 +18,38 @@ describe('AddTask', () => {
     expect(getByRole('button', { name: 'Add' })).toBeInTheDocument();
   });
 
-  it('adds task to taskStolage on click', async () => {
-    const { getByRole } = render(AddTask);
+  context('when nothing is typed', () => {
+    const input = '';
 
-    selectedId.set(0);
-    inputField.set('content 1');
-    await fireEvent.click(getByRole('button', { name: 'Add' }));
+    it('does nothing', async () => {
+      const { getByRole } = render(AddTask);
 
-    expect(get(taskStolage)).toEqual({
-      0: { main: 'base', subTasks: [1] },
-      1: { main: 'content 1', subTasks: [] },
+      inputField.set(input);
+      selectedId.set(0);
+
+      await fireEvent.click(getByRole('button', { name: 'Add' }));
+
+      expect(get(taskStolage)).toEqual({
+        0: { main: 'base', subTasks: [] },
+      });
     });
+  });
 
-    selectedId.set(1);
-    inputField.set('content 2');
-    await fireEvent.click(getByRole('button', { name: 'Add' }));
+  context('when something is typed', () => {
+    const input = 'content 1';
 
-    expect(get(taskStolage)).toEqual({
-      0: { main: 'base', subTasks: [1] },
-      1: { main: 'content 1', subTasks: [2] },
-      2: { main: 'content 2', subTasks: [] },
+    it('adds task to taskStolage on click', async () => {
+      const { getByRole } = render(AddTask);
+
+      inputField.set(input);
+      selectedId.set(0);
+
+      await fireEvent.click(getByRole('button', { name: 'Add' }));
+
+      expect(get(taskStolage)).toEqual({
+        0: { main: 'base', subTasks: [1] },
+        1: { main: 'content 1', subTasks: [] },
+      });
     });
   });
 

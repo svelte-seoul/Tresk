@@ -3,7 +3,12 @@
     import Button from '../uis/Button.svelte';
 
     const handleClick = () => {
-      taskStolage.add($selectedId, $inputField);
+      const content = $inputField;
+
+      if (content.length !== 0) {
+        taskStolage.add($selectedId, $inputField);
+      }
+    
       inputField.reset();
     };
 </script>
