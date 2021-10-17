@@ -2,8 +2,10 @@ import { fireEvent, render } from '@testing-library/svelte';
 
 // @ts-ignore
 import ThemeWrapper from '../testUtils/ThemeWrapper.svelte';
+import ThemeProvider from './ThemeProvider.svelte';
 // @ts-ignore
 import ShowContext from '../testUtils/ShowContext.svelte';
+import { light } from '../theme';
 
 describe('ThemeProvider', () => {
   it('provides name of current theme', () => {
@@ -45,5 +47,17 @@ describe('ThemeProvider', () => {
 
     expect(getByText(/light/)).toBeInTheDocument();
     expect(getByText(/"text":"#000"/)).toBeInTheDocument();
+  });
+
+  it('sets golbal css variables', () => {
+    render(ThemeProvider, { props: { initialTheme: 'light' } });
+
+    Object.keys(light).forEach((type) => {
+      const globalStyles = getComputedStyle(document.documentElement);
+
+      expect(
+        globalStyles.getPropertyValue(`--theme-${type}`),
+      ).toBe(light[type]);
+    });
   });
 });
