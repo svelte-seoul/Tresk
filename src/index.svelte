@@ -1,5 +1,6 @@
 <script>
-    import ThemeProvider from './components/ThemeProvider.svelte';
+    import { ThemeProvider } from 'svelte-theme-provider';
+
     import App from './App.svelte';
 </script>
 

@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "sirv-cli": "^1.0.0",
-    "svelte-css-vars": "^0.0.3"
+    "svelte-css-vars": "^0.0.3",
+    "svelte-theme-provider": "^0.1.11"
   }
 }

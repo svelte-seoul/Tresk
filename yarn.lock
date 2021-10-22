@@ -1749,7 +1749,7 @@ babel-preset-jest@^27.2.0:
     babel-plugin-jest-hoist "^27.2.0"
     babel-preset-current-node-syntax "^1.0.0"
 
-balanced-match@^1.0.0:
+balanced-match@^1.0.0, balanced-match@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
@@ -2005,6 +2005,14 @@ cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
     which "^2.0.1"
+
+css-vars-ponyfill@^2.4.7:
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/css-vars-ponyfill/-/css-vars-ponyfill-2.4.7.tgz#df6fb2928e5ff013eb67e968761f8ed3d440b1e3"
+  integrity sha512-KhG3AbiZrUpIvAQ9Oc/iBqCitmXg6MajFqNRQd9nHvlwOo8p54HTq5DFCIaAUwMGRyttJ+mBmZCRSHJpe6J9cg==
+  dependencies:
+    balanced-match "^1.0.2"
+    get-css-data "^2.0.2"
 
 css.escape@^1.5.1:
   version "1.5.1"
@@ -2601,6 +2609,11 @@ get-caller-file@^2.0.5:
   version "2.0.5"
   resolved "https://registry.npmjs.org/get-caller-file/-/get-caller-file-2.0.5.tgz"
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
+
+get-css-data@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/get-css-data/-/get-css-data-2.0.2.tgz#5a24784f155944021b6f3fff304c15bcfcebdb9e"
+  integrity sha512-pYqg80/7u/MdBrrAQj2OIoZ08TxEnvCHyU5WFnPxxS/D0S8OpUTkqGFRzn8bO38DmtCuYBpR9VMCen78BL4jiQ==
 
 get-intrinsic@^1.0.2, get-intrinsic@^1.1.0, get-intrinsic@^1.1.1:
   version "1.1.1"
@@ -4659,6 +4672,13 @@ svelte-preprocess@^4.9.8:
     magic-string "^0.25.7"
     sorcery "^0.10.0"
     strip-indent "^3.0.0"
+
+svelte-theme-provider@^0.1.11:
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/svelte-theme-provider/-/svelte-theme-provider-0.1.11.tgz#0d07e8cb9bc2f218c48037ace38175407b66faa6"
+  integrity sha512-oolalgBWMZKT8UDMmcOaT31sY25dYFhs0PLCq9VLF/Zbr1HNpcWbkR+LtRhmAg/Fdi6/6a1GIlZ5hpL5dRiEYg==
+  dependencies:
+    css-vars-ponyfill "^2.4.7"
 
 svelte@^3.0.0:
   version "3.43.1"
